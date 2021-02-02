@@ -9,6 +9,8 @@ import { MenusModule } from './menus/menus.module';
 import { EntreesModule } from './entrees/entrees.module';
 import { OrdersModule } from './orders/orders.module';
 import { BoysModule } from './boys/boys.module';
+import { InvoicesModule } from './invoices/invoices.module';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
   imports: [
@@ -37,6 +39,8 @@ import { BoysModule } from './boys/boys.module';
     EntreesModule,
     OrdersModule,
     BoysModule,
+    InvoicesModule,
+    PaymentsModule,
   ],
   providers: [AppGateway],
 })

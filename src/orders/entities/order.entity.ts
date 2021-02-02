@@ -2,13 +2,13 @@ import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import { Boy } from 'src/boys/entities/boy.entity';
 import { Customer } from 'src/customers/entity/customer.entity';
 import { Entree } from 'src/entrees/entities/entree.entity';
+import { Invoice } from 'src/invoices/entities/invoice.entity';
 import { Restaurant } from 'src/restaurants/entities/restaurant.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
@@ -61,4 +61,7 @@ export class Order {
 
   @ManyToOne(() => Boy, (boy) => boy.orders)
   boy: Boy;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.orders)
+  invoice: Invoice;
 }
