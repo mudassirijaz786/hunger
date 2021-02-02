@@ -6,6 +6,8 @@ import { AppGateway } from './app.gateway';
 import { AuthModule } from './auth/auth.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { MenusModule } from './menus/menus.module';
+import { EntreesModule } from './entrees/entrees.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { MenusModule } from './menus/menus.module';
     AuthModule,
     RestaurantsModule,
     MenusModule,
+    EntreesModule,
+    OrdersModule,
   ],
   providers: [AppGateway],
 })
