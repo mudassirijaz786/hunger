@@ -1,9 +1,9 @@
 import { Field, InputType, Int, ObjectType, PickType } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsAlphanumeric, IsAscii, IsEmail, MinLength } from 'class-validator';
-import { CustomersRole } from 'src/customers/customers.enum';
+import { CustomersRole } from 'src/customers/dto/customers.enum';
 
-import { Customer } from '../../customers/customer.entity';
+import { Customer } from '../../customers/entity/customer.entity';
 
 @InputType()
 export class SignUpInput implements Partial<Customer> {

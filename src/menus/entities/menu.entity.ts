@@ -2,6 +2,7 @@ import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import { Entree } from 'src/entrees/entities/entree.entity';
 import { Restaurant } from 'src/restaurants/entities/restaurant.entity';
 import {
+  Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
@@ -19,6 +20,16 @@ export class Menu {
   readonly id: number;
 
   @Field()
+  @Column()
+  name: string;
+
+  @ManyToOne(() => Restaurant, (restaurant) => restaurant.menus)
+  restaurant: Restaurant;
+
+  @OneToMany(() => Entree, (entree) => entree.menu)
+  entrees: Entree[];
+
+  @Field()
   @CreateDateColumn()
   readonly createdAt: Date;
 
@@ -29,10 +40,4 @@ export class Menu {
   @Field(() => Int)
   @VersionColumn()
   readonly version: number;
-
-  @ManyToOne(() => Restaurant, (restaurant) => restaurant.menus)
-  restaurant: Restaurant;
-
-  @OneToMany(() => Entree, (entree) => entree.menu)
-  entrees: Entree[];
 }

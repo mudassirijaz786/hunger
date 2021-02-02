@@ -29,6 +29,9 @@ export class Entree {
   @Column()
   price: number;
 
+  @ManyToOne(() => Menu, (menu) => menu.entrees)
+  menu: Menu;
+
   @Field()
   @CreateDateColumn()
   readonly createdAt: Date;
@@ -40,7 +43,4 @@ export class Entree {
   @Field(() => Int)
   @VersionColumn()
   readonly version: number;
-
-  @ManyToOne(() => Menu, (menu) => menu.entrees)
-  menu: Menu;
 }

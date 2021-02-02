@@ -1,7 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 
-import { Customer } from '../customers/customer.entity';
+import { Customer } from '../customers/entity/customer.entity';
 
 import { AuthService } from './auth.service';
 import { SignInInput } from './dto/auth.dto';

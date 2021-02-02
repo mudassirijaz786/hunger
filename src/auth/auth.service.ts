@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 
-import { Customer } from '../customers/customer.entity';
+import { Customer } from '../customers/entity/customer.entity';
 import { CustomersService } from '../customers/customers.service';
 
 import { JwtPayload } from './dto/jwt-payload.dto';

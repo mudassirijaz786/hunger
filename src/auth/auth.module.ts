@@ -3,7 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Customer } from '../customers/customer.entity';
+import { Customer } from '../customers/entity/customer.entity';
 import { CustomersModule } from '../customers/customers.module';
 
 import { AuthOptionsService } from './auth-options.service';

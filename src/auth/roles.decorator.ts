@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { SetMetadata } from '@nestjs/common';
-import { CustomersRole } from '../customers/customers.enum';
+import { CustomersRole } from '../customers/dto/customers.enum';
 
 export const Roles = (
   role: CustomersRole[],
