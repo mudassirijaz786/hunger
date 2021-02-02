@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppGateway } from './app.gateway';
 import { AuthModule } from './auth/auth.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { MenusModule } from './menus/menus.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
     }),
     AuthModule,
     RestaurantsModule,
+    MenusModule,
   ],
   providers: [AppGateway],
 })
