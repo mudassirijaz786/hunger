@@ -11,39 +11,39 @@ export class CreateCustomerInput implements Partial<Customer> {
   @Field()
   @IsAlphanumeric()
   @MinLength(1)
+  readonly id: number;
+
+  @Field()
+  @IsAlphanumeric()
+  @MinLength(5)
   readonly username: string;
 
   @Field()
   @IsEmail()
-  @MinLength(1)
+  @MinLength(6)
   readonly email: string;
 
   @Field()
-  @IsAscii()
   @MinLength(8)
   readonly password: string;
 
   @Field()
-  @IsAscii()
   readonly role: CustomersRole;
 
   @Field()
-  @IsAscii()
-  @MinLength(2)
+  @MinLength(4)
   readonly city: string;
 
   @Field()
-  @IsAscii()
-  @MinLength(2)
+  @MinLength(4)
   readonly country: string;
 
   @Field()
-  @IsAscii()
-  @MinLength(2)
+  @MinLength(5)
   readonly street: string;
 
   @Field()
-  @MinLength(1)
+  @MinLength(10)
   readonly phone: number;
 }
 
@@ -51,6 +51,11 @@ export class CreateCustomerInput implements Partial<Customer> {
 export class LoginCustomerInput extends PickType(CreateCustomerInput, [
   'username',
   'password',
+] as const) {}
+
+@InputType()
+export class UpdateCustomerInput extends PickType(CreateCustomerInput, [
+  'id',
 ] as const) {}
 
 @ObjectType()
