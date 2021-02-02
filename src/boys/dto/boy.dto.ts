@@ -1,18 +1,14 @@
-import { InputType, Int, Field, PickType } from '@nestjs/graphql';
-import { IsAlphanumeric, IsAscii, IsEmail, MinLength } from 'class-validator';
-import { CreateOrderInput } from 'src/orders/dto/order.dto';
-import { Order } from 'src/orders/entities/order.entity';
+import { InputType, Field, PickType } from '@nestjs/graphql';
+import { IsAlphanumeric, MinLength } from 'class-validator';
 
 @InputType()
 export class CreateBoyInput {
   @Field()
   @IsAlphanumeric()
-  @MinLength(1)
   readonly id: number;
 
   @Field()
-  @IsAlphanumeric()
-  @MinLength(1)
+  @MinLength(3)
   readonly name: string;
 
   @Field()
