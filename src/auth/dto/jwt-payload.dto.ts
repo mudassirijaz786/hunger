@@ -1,4 +1,4 @@
-import { CustomersRole } from 'src/customers/dto/customers.enum';
+import { CustomersRole } from 'src/customers/entity/customer.entity';
 
 export interface JwtPayload {
   id: number;

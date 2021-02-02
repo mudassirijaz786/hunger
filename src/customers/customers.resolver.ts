@@ -5,7 +5,7 @@ import { Roles } from 'src/auth/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { GqlAuthGuard } from '../auth/gql-auth.guard';
 import { Customer } from './entity/customer.entity';
-import { CustomersRole } from './dto/customers.enum';
+import { CustomersRole } from './entity/customer.entity';
 import { CustomersService } from './customers.service';
 
 @Resolver(() => Customer)

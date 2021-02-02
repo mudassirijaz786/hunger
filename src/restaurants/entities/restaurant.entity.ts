@@ -26,9 +26,11 @@ export class Restaurant {
   @Column()
   address: string;
 
+  // Restaurant has zero or more menus
   @OneToMany(() => Menu, (menu) => menu.restaurant)
   menus: Menu[];
 
+  // Restaurant has zero or more orders
   @OneToMany(() => Order, (order) => order.restaurant)
   orders: Order[];
 

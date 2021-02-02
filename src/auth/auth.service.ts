@@ -8,9 +8,11 @@ import { Customer } from '../customers/entity/customer.entity';
 import { CustomersService } from '../customers/customers.service';
 
 import { JwtPayload } from './dto/jwt-payload.dto';
-import { SignInInput } from './dto/auth.dto';
-import { SignInResult } from './dto/auth.dto';
-import { SignUpInput } from './dto/auth.dto';
+import {
+  CreateCustomerInput,
+  SignInResult,
+  LoginCustomerInput,
+} from '../customers/dto/customers.dto';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +23,7 @@ export class AuthService {
     private readonly customersRepository: Repository<Customer>,
   ) {}
 
-  async signUp(input: SignUpInput): Promise<Customer> {
+  async signUp(input: CreateCustomerInput): Promise<Customer> {
     const newCustomer = new Customer();
     Object.assign(newCustomer, input);
     newCustomer.password = AuthService.encryptPassword(newCustomer.password);
@@ -35,7 +37,7 @@ export class AuthService {
     return bcrypt.hashSync(password, salt);
   }
 
-  async signIn(input: SignInInput): Promise<SignInResult> {
+  async signIn(input: LoginCustomerInput): Promise<SignInResult> {
     const customer = await this.customersService.findOneByName(input.username);
     if (!customer) {
       return new SignInResult();

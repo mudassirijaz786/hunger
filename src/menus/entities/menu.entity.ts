@@ -20,16 +20,6 @@ export class Menu {
   readonly id: number;
 
   @Field()
-  @Column()
-  name: string;
-
-  @ManyToOne(() => Restaurant, (restaurant) => restaurant.menus)
-  restaurant: Restaurant;
-
-  @OneToMany(() => Entree, (entree) => entree.menu)
-  entrees: Entree[];
-
-  @Field()
   @CreateDateColumn()
   readonly createdAt: Date;
 
@@ -40,4 +30,16 @@ export class Menu {
   @Field(() => Int)
   @VersionColumn()
   readonly version: number;
+
+  // Writable fields
+  @Field()
+  @Column()
+  name: string;
+
+  // Relations
+  @ManyToOne(() => Restaurant, (restaurant) => restaurant.menus)
+  restaurant: Restaurant;
+
+  @OneToMany(() => Entree, (entree) => entree.menu)
+  entrees: Entree[];
 }

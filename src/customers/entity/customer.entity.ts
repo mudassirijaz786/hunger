@@ -14,7 +14,9 @@ import {
   VersionColumn,
 } from 'typeorm';
 
-import { CustomersRole } from '../dto/customers.enum';
+export enum CustomersRole {
+  CUSTOMER = 'customer',
+}
 
 @ObjectType()
 @Entity()
@@ -23,6 +25,19 @@ export class Customer {
   @PrimaryGeneratedColumn()
   readonly id: number;
 
+  @Field()
+  @CreateDateColumn()
+  readonly createdAt: Date;
+
+  @Field()
+  @UpdateDateColumn()
+  readonly updatedAt: Date;
+
+  @Field(() => Int)
+  @VersionColumn()
+  readonly version: number;
+
+  // Writable fields
   @Field()
   @Index({ unique: true })
   @Column()
@@ -49,8 +64,9 @@ export class Customer {
   @Column()
   street: string;
 
-  @OneToMany(() => Order, (order) => order.customer)
-  orders: Order[];
+  @Field()
+  @Column()
+  phone: number;
 
   @Field()
   @Column({
@@ -60,15 +76,7 @@ export class Customer {
   })
   role: CustomersRole;
 
-  @Field()
-  @CreateDateColumn()
-  readonly createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  readonly updatedAt: Date;
-
-  @Field(() => Int)
-  @VersionColumn()
-  readonly version: number;
+  // Relations
+  @OneToMany(() => Order, (order) => order.customer)
+  orders: Order[];
 }

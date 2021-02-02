@@ -1,10 +1,12 @@
 import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
-import { Menu } from 'src/menus/entities/menu.entity';
+import { Order } from 'src/orders/entities/order.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
@@ -12,7 +14,7 @@ import {
 
 @ObjectType()
 @Entity()
-export class Entree {
+export class Boy {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   readonly id: number;
@@ -29,20 +31,20 @@ export class Entree {
   @VersionColumn()
   readonly version: number;
 
-  // Writable fields
+  // Writable Fields
   @Field()
   @Column()
   name: string;
 
   @Field()
   @Column()
-  description: string;
+  leftTime: Date;
 
   @Field()
   @Column()
-  price: number;
+  arrivalTime: Date;
 
   // Relations
-  @ManyToOne(() => Menu, (menu) => menu.entrees)
-  menu: Menu;
+  @OneToMany(() => Order, (order) => order.boy)
+  orders: Order[];
 }

@@ -8,6 +8,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
 import { MenusModule } from './menus/menus.module';
 import { EntreesModule } from './entrees/entrees.module';
 import { OrdersModule } from './orders/orders.module';
+import { BoysModule } from './boys/boys.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { OrdersModule } from './orders/orders.module';
     MenusModule,
     EntreesModule,
     OrdersModule,
+    BoysModule,
   ],
   providers: [AppGateway],
 })
