@@ -1,5 +1,4 @@
 import { InputType, Int, Field, PickType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
 import { IsAlphanumeric, IsAscii, IsEmail, MinLength } from 'class-validator';
 import { CreateOrderInput } from 'src/orders/dto/order.dto';
 import { Order } from 'src/orders/entities/order.entity';

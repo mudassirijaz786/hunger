@@ -1,5 +1,4 @@
 import { InputType, Int, Field, PickType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
 import { deliveryStatus } from '../entities/order.entity';
 
 @InputType()

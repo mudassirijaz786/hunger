@@ -19,22 +19,6 @@ export class Restaurant {
   readonly id: number;
 
   @Field()
-  @Column()
-  name: string;
-
-  @Field()
-  @Column()
-  address: string;
-
-  // Restaurant has zero or more menus
-  @OneToMany(() => Menu, (menu) => menu.restaurant)
-  menus: Menu[];
-
-  // Restaurant has zero or more orders
-  @OneToMany(() => Order, (order) => order.restaurant)
-  orders: Order[];
-
-  @Field()
   @CreateDateColumn()
   readonly createdAt: Date;
 
@@ -45,4 +29,20 @@ export class Restaurant {
   @Field(() => Int)
   @VersionColumn()
   readonly version: number;
+
+  // Writable fields
+  @Field()
+  @Column()
+  name: string;
+
+  @Field()
+  @Column()
+  address: string;
+
+  // Relations
+  @OneToMany(() => Menu, (menu) => menu.restaurant)
+  menus: Menu[];
+
+  @OneToMany(() => Order, (order) => order.restaurant)
+  orders: Order[];
 }
