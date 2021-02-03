@@ -2,7 +2,6 @@ import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { InvoicesService } from './invoices.service';
 import { Invoice } from './entities/invoice.entity';
 import { CreateInvoiceInput } from './dto/invoice.dto';
-import { UpdateInvoiceInput } from './dto/invoice.dto';
 
 @Resolver(() => Invoice)
 export class InvoicesResolver {
@@ -23,16 +22,6 @@ export class InvoicesResolver {
   @Query(() => Invoice, { name: 'invoice' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.invoicesService.findOne(id);
-  }
-
-  @Mutation(() => Invoice)
-  updateInvoice(
-    @Args('updateInvoiceInput') updateInvoiceInput: UpdateInvoiceInput,
-  ) {
-    return this.invoicesService.update(
-      updateInvoiceInput.id,
-      updateInvoiceInput,
-    );
   }
 
   @Mutation(() => Invoice)

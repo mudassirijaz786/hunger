@@ -1,4 +1,5 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Base } from 'src/base/base.entity';
 import { Invoice } from 'src/invoices/entities/invoice.entity';
 import { Order } from 'src/orders/entities/order.entity';
 import {
@@ -8,9 +9,6 @@ import {
   JoinColumn,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  VersionColumn,
 } from 'typeorm';
 
 export enum PaymentType {
@@ -21,28 +19,10 @@ export enum PaymentType {
 
 @ObjectType()
 @Entity()
-export class Payment {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  readonly id: number;
-
-  @Field()
-  @CreateDateColumn()
-  readonly createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  readonly updatedAt: Date;
-
+export class Payment extends Base {
   @Field()
   @CreateDateColumn()
   readonly paymentDate: Date;
-
-  @Field(() => Int)
-  @VersionColumn()
-  readonly version: number;
-
-  // Writable fields
 
   @Field()
   @Column({

@@ -1,11 +1,7 @@
-import { InputType, Int, Field, PickType } from '@nestjs/graphql';
-import { MinLength } from 'class-validator';
+import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateInvoiceInput {
-  @Field(() => Int)
-  readonly id: number;
-
   @Field()
   readonly foodDetails: string;
 
@@ -15,8 +11,3 @@ export class CreateInvoiceInput {
   @Field()
   readonly adjustment: number;
 }
-
-@InputType()
-export class UpdateInvoiceInput extends PickType(CreateInvoiceInput, [
-  'id',
-] as const) {}

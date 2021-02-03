@@ -37,7 +37,7 @@ export class UsersResolver {
   // @UseGuards(GqlAuthGuard, RolesGuard)
   // @Roles([UserRole.CUSTOMER])
   @Mutation(() => Customer)
-  deleteCustomer(@Args('id', { type: () => Int }) id: number): Promise<void> {
+  deleteCustomer(@Args('id') id: string): Promise<void> {
     return this.customersService.delete(id);
   }
 }

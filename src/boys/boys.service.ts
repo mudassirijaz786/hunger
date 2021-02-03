@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBoyInput } from './dto/boy.dto';
-import { UpdateBoyInput } from './dto/boy.dto';
 
 @Injectable()
 export class BoysService {
@@ -14,10 +13,6 @@ export class BoysService {
 
   findOne(id: number) {
     return `This action returns a #${id} boy`;
-  }
-
-  update(id: number, updateBoyInput: UpdateBoyInput) {
-    return `This action updates a #${id} boy`;
   }
 
   remove(id: number) {

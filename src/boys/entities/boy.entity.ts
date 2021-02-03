@@ -1,37 +1,11 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Base } from 'src/base/base.entity';
 import { Order } from 'src/orders/entities/order.entity';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  VersionColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 @ObjectType()
 @Entity()
-export class Boy {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  readonly id: number;
-
-  @Field()
-  @CreateDateColumn()
-  readonly createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  readonly updatedAt: Date;
-
-  @Field(() => Int)
-  @VersionColumn()
-  readonly version: number;
-
-  // Writable Fields
+export class Boy extends Base {
   @Field()
   @Column()
   name: string;

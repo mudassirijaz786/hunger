@@ -1,18 +1,10 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Base } from 'src/base/base.entity';
 import { Boy } from 'src/boys/entities/boy.entity';
 import { Customer } from 'src/customers/entity/customer.entity';
-import { Entree } from 'src/entrees/entities/entree.entity';
 import { Invoice } from 'src/invoices/entities/invoice.entity';
 import { Restaurant } from 'src/restaurants/entities/restaurant.entity';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  VersionColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 
 export enum deliveryStatus {
   DELIVERED = 'delivered',
@@ -22,28 +14,7 @@ export enum deliveryStatus {
 
 @ObjectType()
 @Entity()
-export class Order {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  readonly id: number;
-
-  @Field()
-  @CreateDateColumn()
-  readonly time: Date;
-
-  @Field()
-  @CreateDateColumn()
-  readonly createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  readonly updatedAt: Date;
-
-  @Field(() => Int)
-  @VersionColumn()
-  readonly version: number;
-
-  // Writable fields
+export class Order extends Base {
   @Field()
   @Column({
     type: 'enum',

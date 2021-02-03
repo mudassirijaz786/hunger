@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderInput } from './dto/order.dto';
-import { UpdateOrderInput } from './dto/order.dto';
 
 @Injectable()
 export class OrdersService {
@@ -14,10 +13,6 @@ export class OrdersService {
 
   findOne(id: number) {
     return `This action returns a #${id} order`;
-  }
-
-  update(id: number, updateOrderInput: UpdateOrderInput) {
-    return `This action updates a #${id} order`;
   }
 
   remove(id: number) {

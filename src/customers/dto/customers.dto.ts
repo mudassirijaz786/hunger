@@ -1,18 +1,14 @@
 import { Field, InputType, Int, ObjectType, PickType } from '@nestjs/graphql';
 import { IsAlphanumeric, IsAscii, IsEmail, MinLength } from 'class-validator';
 import { CreateOrderInput } from 'src/orders/dto/order.dto';
+import { Order } from 'src/orders/entities/order.entity';
 import {
   Customer,
   CustomersRole,
 } from '../../customers/entity/customer.entity';
 
 @InputType()
-export class CreateCustomerInput implements Partial<Customer> {
-  @Field()
-  @IsAlphanumeric()
-  @MinLength(1)
-  readonly id: number;
-
+export class CreateCustomerInput {
   @Field()
   @IsAlphanumeric()
   @MinLength(5)
@@ -44,18 +40,13 @@ export class CreateCustomerInput implements Partial<Customer> {
 
   @Field()
   @MinLength(10)
-  readonly phone: number;
+  readonly phone: string;
 }
 
 @InputType()
 export class LoginCustomerInput extends PickType(CreateCustomerInput, [
   'username',
   'password',
-] as const) {}
-
-@InputType()
-export class UpdateCustomerInput extends PickType(CreateCustomerInput, [
-  'id',
 ] as const) {}
 
 @ObjectType()

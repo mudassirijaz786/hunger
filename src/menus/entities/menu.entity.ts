@@ -1,37 +1,12 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Base } from 'src/base/base.entity';
 import { Entree } from 'src/entrees/entities/entree.entity';
 import { Restaurant } from 'src/restaurants/entities/restaurant.entity';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  VersionColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
 @ObjectType()
 @Entity()
-export class Menu {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  readonly id: number;
-
-  @Field()
-  @CreateDateColumn()
-  readonly createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  readonly updatedAt: Date;
-
-  @Field(() => Int)
-  @VersionColumn()
-  readonly version: number;
-
-  // Writable fields
+export class Menu extends Base {
   @Field()
   @Column()
   name: string;

@@ -1,5 +1,6 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { Exclude } from 'class-transformer';
+import { Base } from 'src/base/base.entity';
 import { Order } from 'src/orders/entities/order.entity';
 import {
   Column,
@@ -18,24 +19,7 @@ export enum CustomersRole {
 
 @ObjectType()
 @Entity()
-export class Customer {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  readonly id: number;
-
-  @Field()
-  @CreateDateColumn()
-  readonly createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  readonly updatedAt: Date;
-
-  @Field(() => Int)
-  @VersionColumn()
-  readonly version: number;
-
-  // Writable fields
+export class Customer extends Base {
   @Field()
   @Index({ unique: true })
   @Column()
@@ -64,7 +48,7 @@ export class Customer {
 
   @Field()
   @Column()
-  phone: number;
+  phone: string;
 
   @Field()
   @Column({
@@ -75,6 +59,9 @@ export class Customer {
   role: CustomersRole;
 
   // Relations
-  @OneToMany(() => Order, (order) => order.customer)
+  @OneToMany(() => Order, (order) => order.customer, {
+    eager: true,
+    cascade: true,
+  })
   orders: Order[];
 }

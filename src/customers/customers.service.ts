@@ -11,7 +11,9 @@ export class CustomersService {
   ) {}
 
   async findAll(): Promise<Customer[]> {
-    const customers = await this.customersRepository.find();
+    const customers = await this.customersRepository.find({
+      relations: ['orders'],
+    });
     return customers;
   }
 
@@ -20,12 +22,12 @@ export class CustomersService {
     return customer;
   }
 
-  async findById(id: number): Promise<Customer> {
+  async findById(id: string): Promise<Customer> {
     const customer = await this.customersRepository.findOne({ id });
     return customer;
   }
 
-  async delete(id: number): Promise<void> {
+  async delete(id: string): Promise<void> {
     await this.customersRepository.delete({ id });
   }
 }

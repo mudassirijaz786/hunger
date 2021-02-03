@@ -2,7 +2,6 @@ import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { MenusService } from './menus.service';
 import { Menu } from './entities/menu.entity';
 import { CreateMenuInput } from './dto/menus.dto';
-import { UpdateMenuInput } from './dto/menus.dto';
 
 @Resolver(() => Menu)
 export class MenusResolver {
@@ -21,11 +20,6 @@ export class MenusResolver {
   @Query(() => Menu, { name: 'menu' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.menusService.findOne(id);
-  }
-
-  @Mutation(() => Menu)
-  updateMenu(@Args('updateMenuInput') updateMenuInput: UpdateMenuInput) {
-    return this.menusService.update(updateMenuInput.id, updateMenuInput);
   }
 
   @Mutation(() => Menu)

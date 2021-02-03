@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMenuInput } from './dto/menus.dto';
-import { UpdateMenuInput } from './dto/menus.dto';
 
 @Injectable()
 export class MenusService {
@@ -14,10 +13,6 @@ export class MenusService {
 
   findOne(id: number) {
     return `This action returns a #${id} menu`;
-  }
-
-  update(id: number, updateMenuInput: UpdateMenuInput) {
-    return `This action updates a #${id} menu`;
   }
 
   remove(id: number) {
