@@ -2,15 +2,15 @@ import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { Exclude } from 'class-transformer';
 import { Base } from 'src/base/base.entity';
 import { Order } from 'src/orders/entities/order.entity';
+import { hash } from 'bcryptjs';
+
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
-  CreateDateColumn,
   Entity,
   Index,
   OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  VersionColumn,
 } from 'typeorm';
 
 export enum CustomersRole {
@@ -60,6 +60,6 @@ export class Customer extends Base {
 
   // Relations
   @Field(() => [Order])
-  @OneToMany(() => Order, (order) => order.customer)
+  @OneToMany(() => Order, (order) => order.customer, { eager: true })
   orders: Order[];
 }

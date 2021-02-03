@@ -24,6 +24,10 @@ export class CreateCustomerInput {
   readonly password: string;
 
   @Field()
+  @MinLength(8)
+  readonly hashPassword: string;
+
+  @Field()
   readonly role: CustomersRole;
 
   @Field()

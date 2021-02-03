@@ -11,9 +11,7 @@ export class CustomersService {
   ) {}
 
   async findAll(): Promise<Customer[]> {
-    const customers = await this.customersRepository.find({
-      relations: ['orders'],
-    });
+    const customers = await this.customersRepository.find();
     return customers;
   }
 
