@@ -19,6 +19,7 @@ export class Boy extends Base {
   arrivalTime: Date;
 
   // Relations
+  @Field(() => [Order])
   @OneToMany(() => Order, (order) => order.boy)
   orders: Order[];
 }

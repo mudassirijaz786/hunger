@@ -12,9 +12,11 @@ export class Menu extends Base {
   name: string;
 
   // Relations
+  @Field(() => Restaurant)
   @ManyToOne(() => Restaurant, (restaurant) => restaurant.menus)
   restaurant: Restaurant;
 
+  @Field(() => [Entree])
   @OneToMany(() => Entree, (entree) => entree.menu)
   entrees: Entree[];
 }

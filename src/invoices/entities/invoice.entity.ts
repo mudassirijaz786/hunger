@@ -20,9 +20,11 @@ export class Invoice extends Base {
   adjustment: number;
 
   // Relations
+  @Field(() => [Order])
   @OneToMany(() => Order, (order) => order.invoice)
   orders: Order[];
 
+  @Field(() => Payment)
   @OneToOne(() => Payment, (payment) => payment.invoice)
   payment: Payment;
 }

@@ -24,15 +24,19 @@ export class Order extends Base {
   status: deliveryStatus;
 
   // Relations
+  @Field(() => Restaurant)
   @ManyToOne(() => Restaurant, (restaurant) => restaurant.orders)
   restaurant: Restaurant;
 
+  @Field(() => Customer)
   @ManyToOne(() => Customer, (customer) => customer.orders)
   customer: Customer;
 
+  @Field(() => Boy)
   @ManyToOne(() => Boy, (boy) => boy.orders)
   boy: Boy;
 
+  @Field(() => Invoice)
   @ManyToOne(() => Invoice, (invoice) => invoice.orders)
   invoice: Invoice;
 }

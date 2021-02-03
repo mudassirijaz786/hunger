@@ -59,9 +59,7 @@ export class Customer extends Base {
   role: CustomersRole;
 
   // Relations
-  @OneToMany(() => Order, (order) => order.customer, {
-    eager: true,
-    cascade: true,
-  })
+  @Field(() => [Order])
+  @OneToMany(() => Order, (order) => order.customer)
   orders: Order[];
 }

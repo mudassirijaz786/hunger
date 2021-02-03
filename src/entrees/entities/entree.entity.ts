@@ -19,6 +19,7 @@ export class Entree extends Base {
   price: number;
 
   // Relations
+  @Field(() => Menu)
   @ManyToOne(() => Menu, (menu) => menu.entrees)
   menu: Menu;
 }

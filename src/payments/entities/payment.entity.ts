@@ -37,9 +37,11 @@ export class Payment extends Base {
   amountPaid: number;
 
   // Relations
+  @Field(() => [Order])
   @OneToMany(() => Order, (order) => order.invoice)
   orders: Order[];
 
+  @Field(() => Invoice)
   @OneToOne(() => Invoice, (invoice) => invoice.payment)
   @JoinColumn()
   invoice: Invoice;
