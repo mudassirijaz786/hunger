@@ -1,17 +1,9 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { Exclude } from 'class-transformer';
 import { Base } from 'src/base/base.entity';
 import { Order } from 'src/orders/entities/order.entity';
-import { hash } from 'bcryptjs';
 
-import {
-  BeforeInsert,
-  BeforeUpdate,
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-} from 'typeorm';
+import { Column, Entity, Index, OneToMany } from 'typeorm';
 
 export enum CustomersRole {
   CUSTOMER = 'customer',
